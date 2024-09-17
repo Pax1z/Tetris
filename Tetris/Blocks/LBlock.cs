@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    public class LBlock : Block
-    {
-        private readonly Position[][] tiles = new Position[][]
+        public class LBlock : Block
         {
-            new Position[] { new(0, 2), new(0, 1), new(1, 0), new(0, 0) },
-            new Position[] { new(1, 0), new(1, 1), new(1, 1), new(0, 1) },
-            new Position[] { new(1, 1), new(2, 1), new(1, 2), new(1, 1) },
-            new Position[] { new(1, 2), new(2, 2), new(2, 0), new(2, 1) },
-        };
+            private readonly Position[][] tiles = new Position[][]
+            {
+            new Position[] { new(0, 2), new(1, 0), new(1, 1), new(1, 2) },  // L shape, default rotation
+            new Position[] { new(0, 1), new(1, 1), new(2, 1), new(2, 2) },  // L shape, rotated right
+            new Position[] { new(1, 0), new(1, 1), new(1, 2), new(2, 0) },  // L shape, upside down
+            new Position[] { new(0, 0), new(0, 1), new(1, 1), new(2, 1) }   // L shape, rotated left
+            };
 
-        public override int Id => 3;
-        protected override Position StartOffset => new Position(0, 3);
-        protected override Position[][] Tiles => tiles;
-    }
+            public override int Id => 3;
+
+            protected override Position StartOffset => new Position(0, 3);
+            protected override Position[][] Tiles => tiles;
+        }
 }
